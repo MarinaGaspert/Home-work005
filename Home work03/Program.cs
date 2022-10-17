@@ -3,41 +3,43 @@
 
 [3 7 22 2 78] -> 76*/
 
-Console.WriteLine($"Минимальное число: {min}");
-Console.WriteLine($"Минимальное число: {max}");
-Console.WriteLine($"Разница между максимальным и минимальным числами: {max}  и {min} -> {summ}");
-
-
-
-
-
-
-
 int size = 10;
-summ = 0;
-double[] array=new double[10];
-(double max, double min)= FindMaxAndMin(array);
-
-
+double[] numbers = new double[size];
+double max = numbers[0];
+double min = numbers[0];
+RandomNumbers(numbers);
 PrintArray(numbers);
 
-(double,double) FindMaxAndMin (double[] array)
+
+for (int i = 0; i < numbers.Length; i++)
 {
-    double max = array[0];
-    double min = array[0];
-    for (int i = 1; i < length; i++)
+    if (numbers[i] > max)
     {
-        if (array[i]<min)
-        min= array[i];
-        summ= max - min;
+        max = numbers[i];
     }
-    return (summ);
+    else if (numbers[i] < min)
+    {
+        min = numbers[i];
+    }
 }
 
 
+Console.WriteLine($"Минимальное число: {min}");
+Console.WriteLine($"Максимальное число: {max}");
+Console.WriteLine($"Разница между максимальным и минимальным числами: {max-min}");
 
+
+// Метод рандомных чисел.
+void RandomNumbers(double[] array)
+{
+    Random rnd=new Random();
+    for(int i = 0; i < array.Length; i++)
+    {
+        array[i] = rnd.Next(-10,10);
+    }
+}
 // Метод печати массива.
-void PrintArray(int[] array)
+void PrintArray(double[] array)
 {
     for(int i = 0; i < array.Length; i++)
     {
@@ -45,3 +47,7 @@ void PrintArray(int[] array)
     }
     Console.WriteLine();
 }
+
+
+
+
